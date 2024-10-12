@@ -3,7 +3,7 @@ ROCK PAPER AND SCISSORS
 little console game written for THE ODIN PROJECT assignment 
 */
 
-const ROUNDS = 5; // How many rounds.
+const ROUNDS = 5; // How many rounds. For now as constant, later player may choose no of rounds..
 
 // fn getComputerChoice - computer randomly chooses between three items
 function getComputerChoice() {
