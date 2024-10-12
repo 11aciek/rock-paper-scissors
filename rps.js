@@ -5,21 +5,17 @@ little console game written for THE ODIN PROJECT assignment
 
 const ROUNDS = 5; // How many rounds. For now as constant, later player may choose no of rounds..
 
-// fn getComputerChoice - computer randomly chooses between three items
 function getComputerChoice() {
   return ["rock", "paper", "scissors"][Math.floor(Math.random() * 3)];
 }
 
-
-// fn getHumanChoice - player chooses 
 function getHumanChoice() {
-  return prompt("\nWhat is your choice (rock, paper, scissors)? ").toLowerCase(); // player input has to be case-insensitive
+  return prompt("\nWhat is your choice (rock, paper, scissors)? ").toLowerCase(); 
 }
 
 let humanScore = 0;
 let computerScore = 0;
 
-// fn plays only one round
 function playRound(humanChoice, computerChoice, round) {
 
   const result = fight(humanChoice, computerChoice);
@@ -38,11 +34,9 @@ function playRound(humanChoice, computerChoice, round) {
 	console.error("ERROR!! You have to choose between rock, paper or scissors!");
 	humanScore--; // it is a penalty for a bad choice
   }
-  
   console.log(`Player ~> ${humanScore} ::vs:: ${computerScore} <~ Computer`);
 }
 
-// this fn comapares selections and returns one of four options: win, loose, tie or error
 function fight(humanChoice, computerChoice) {
   if (humanChoice === computerChoice) return "tie";
 
@@ -58,7 +52,6 @@ function fight(humanChoice, computerChoice) {
   }
 }
 
-// main fn who plays whole match
 function playMatch(rounds) {
 
   for (let round = 1; round <= rounds; round++) {
@@ -73,7 +66,6 @@ function playMatch(rounds) {
   }
 }
 
-// this fn checks what is a result and ends the game
 function whoWin() {
   console.log("\n");
   if (humanScore == computerScore) {
@@ -88,4 +80,3 @@ function whoWin() {
 console.clear();
 playMatch(ROUNDS);
 whoWin();
-
