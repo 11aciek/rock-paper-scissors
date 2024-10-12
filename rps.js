@@ -13,8 +13,7 @@ function getComputerChoice() {
 
 // fn getHumanChoice - player chooses 
 function getHumanChoice() {
-  const choice = prompt("\nWhat is your choice (rock, paper, scissors)? ");
-  return choice.toLowerCase(); // player input has to be case-insensitive
+  return prompt("\nWhat is your choice (rock, paper, scissors)? ").toLowerCase(); // player input has to be case-insensitive
 }
 
 let humanScore = 0;
