@@ -57,9 +57,14 @@ body {
   gap: 3em;
 }
 
-.play-button {
+.human-button,
+.computer-button {
   width: 75px;
   height: 100px;
   border-radius: 5px;
 }
 
+.active {
+  border: 2px solid red;
+  background-color: lightpink;
+}

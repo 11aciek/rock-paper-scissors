@@ -4,14 +4,19 @@ little console game written for THE ODIN PROJECT assignment
 */
 
 const ROUNDS = 5; // How many rounds. For now as constant, later player may choose no of rounds..
+const humanButton = Array.from(document.querySelectorAll(".human-button"));
+let humanSelection = "";
 
 function getComputerChoice() {
   return ["rock", "paper", "scissors"][Math.floor(Math.random() * 3)];
 }
 
-function getHumanChoice() {
-  return prompt("\nWhat is your choice (rock, paper, scissors)? ").toLowerCase(); 
-}
+humanButton.forEach(btn => btn.addEventListener("click", function(e) {
+  humanSelection = e.target.id;
+  humanButton.forEach(btn => btn.classList.remove("active"));
+  btn.classList.add("active");
+  }));
+
 
 let humanScore = 0;
 let computerScore = 0;
@@ -78,5 +83,4 @@ function whoWin() {
 }
 
 console.clear();
-playMatch(ROUNDS);
-whoWin();
+
