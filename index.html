@@ -3,9 +3,11 @@
   <head>
 	<meta charset="UTF-8">
 	<title>Rock Paper Scissors</title>
+	<link rel="stylesheet" href="style.css">
   </head>
   <body>
-	<div class="game-box">
+	<div class="status-panel"></div>
+	<div class="board-box">
 	  <div class="info">
 		<div class="info-box">
 		  <div class="info-text">Round</div>
@@ -13,18 +15,17 @@
 		</div>
 		<div class="info-box">
 		  <div class="info-text">Result</div>
-		  <div class="info-computer-result"></div>
-		  <div class="info-player-result"></div>
+		  <div class="info-result"></div>
 		</div>
 	  </div>
 	  <div class="game-box">
 		<div class=computer-choice">
-		  <button id="computer">press me</button>
+		  <button class="play-button" id="computer">press me</button>
 		</div>
 		<div class="player-choice">
-		  <button id="rock">rock</button>
-		  <button id="paper">paper</button>
-		  <button id="scissors">scissors</button>
+		  <button class="play-button" id="rock">rock</button>
+		  <button class="play-button" id="paper">paper</button>
+		  <button class="play-button" id="scissors">scissors</button>
 		</div>
 	  </div>
 	</div>
