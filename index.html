@@ -3,23 +3,29 @@
   <head>
 	<meta charset="UTF-8">
 	<title>Rock Paper Scissors</title>
+	<style>
+@import url('https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap');
+</style>
 	<link rel="stylesheet" href="style.css">
   </head>
   <body>
-	<div class="status-panel"></div>
+	<div class="status-panel">Let's start a game!</div>
 	<div class="board-box">
 	  <div class="info">
 		<div class="info-box">
 		  <div class="info-text">Round</div>
-		  <div class="info-round"></div>
+		  <div class="info-round">0</div>
 		</div>
 		<div class="info-box">
 		  <div class="info-text">Result</div>
-		  <div class="info-result"></div>
+		  <div class="info-result">
+			<div class="result-text">P vs C</div>
+			<div class="result">0 : 0</div>
+		  </div>
 		</div>
 	  </div>
 	  <div class="game-box">
-		<div class=computer-choice">
+		<div class="computer-choice">
 		  <button class="computer-button" id="computer">press me</button>
 		</div>
 		<div class="player-choice">

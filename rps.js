@@ -5,41 +5,85 @@ little console game written for THE ODIN PROJECT assignment
 
 const ROUNDS = 5; // How many rounds. For now as constant, later player may choose no of rounds..
 const humanButton = Array.from(document.querySelectorAll(".human-button"));
+const playButton = document.querySelector("#computer");
+const statusPanel = document.querySelector(".status-panel");
+const infoRound = document.querySelector(".info-round");
+const result = document.querySelector(".result");
+
 let humanSelection = "";
+let computerSelection = "";
+let humanScore = 0;
+let computerScore = 0;
+let round = 0;
+let newGame = true;
 
 function getComputerChoice() {
   return ["rock", "paper", "scissors"][Math.floor(Math.random() * 3)];
 }
 
-humanButton.forEach(btn => btn.addEventListener("click", function(e) {
-  humanSelection = e.target.id;
+function unselectButtons() {
   humanButton.forEach(btn => btn.classList.remove("active"));
+}
+
+humanButton.forEach(btn => btn.addEventListener("click", function(e) {
+  if (newGame) {
+	playNewGame();
+	  }
+  humanSelection = e.target.id;
+  unselectButtons();
   btn.classList.add("active");
   }));
 
+playButton.addEventListener("click", function() {
+  if (newGame) {
+	playNewGame();
+	unselectButtons();
+  }
 
-let humanScore = 0;
-let computerScore = 0;
+  computerSelection = getComputerChoice();
+  playButton.innerText = computerSelection;
+  if (humanSelection) {
+	playRound(humanSelection, computerSelection, ++round)
+	result.innerText = `${humanScore} : ${computerScore}`;
+  } else {
+	statusPanel.innerText = "Please choose the option";
+	playButton.innerText = "press me";
+  }
+  if (round == ROUNDS) whoWin();
+  if (humanScore > (computerScore + ROUNDS - round) ||
+	  computerScore > (humanScore + ROUNDS - round)) whoWin();
+
+});
+  
+function playNewGame() {
+humanSelection = "";
+	computerSelection = "";
+	humanScore = 0;
+	computerScore = 0;
+	round = 0;
+	playButton.innerText = "press me";
+	infoRound.innerText = 0;
+	result.innerText = "0 : 0";
+	statusPanel.innerText = "Let start a game!";
+	newGame = false;
+}
+
 
 function playRound(humanChoice, computerChoice, round) {
 
   const result = fight(humanChoice, computerChoice);
 
-  console.log(`Round No ${round}`);
+  infoRound.innerText = round;
 
   if (result == "win") {
-	console.log(`You win! ${humanChoice} beats ${computerChoice}.`);
+	statusPanel.innerText = `You win! ${humanChoice} beats ${computerChoice}.`;
 	humanScore++;
   } else if (result == "loose") {
-	console.log(`You loose! ${computerChoice} beats ${humanChoice}.`);
+	statusPanel.innerText = `You loose! ${computerChoice} beats ${humanChoice}.`;
 	computerScore++;
   } else if (result == "tie") {
-	console.log(`Tie! ${humanChoice} vs ${computerChoice}.`);
-  } else {
-	console.error("ERROR!! You have to choose between rock, paper or scissors!");
-	humanScore--; // it is a penalty for a bad choice
+	statusPanel.innerText = `Tie! ${humanChoice} vs ${computerChoice}.`;
   }
-  console.log(`Player ~> ${humanScore} ::vs:: ${computerScore} <~ Computer`);
 }
 
 function fight(humanChoice, computerChoice) {
@@ -57,30 +101,14 @@ function fight(humanChoice, computerChoice) {
   }
 }
 
-function playMatch(rounds) {
-
-  for (let round = 1; round <= rounds; round++) {
-	const humanSelection = getHumanChoice()
-	const computerSelection = getComputerChoice();
-	
-	playRound(humanSelection, computerSelection, round);
-
-	// if player or computer is unable to win or tie the match is over
-	if (humanScore > (computerScore + rounds - round) ||
-	  computerScore > (humanScore + rounds - round)) break;
-  }
-}
-
 function whoWin() {
   console.log("\n");
   if (humanScore == computerScore) {
-	console.log("\nHmmm.. It is a TIE.");
+	statusPanel.innerText = "Hmmm.. It is a TIE.";
   } else if (humanScore > computerScore) {
-	console.log("\nCongratulations! You WIN.");
+	statusPanel.innerText = "Congratulations! You WIN.";
   } else {
-	console.log("\nHaha! You LOSE.");
+	statusPanel.innerText = "Haha! You LOSE.";
   }
+  newGame = true;
 }
-
-console.clear();
-
