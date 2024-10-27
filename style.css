@@ -10,6 +10,23 @@ body {
   height: 50px;
   margin: 50px auto -150px auto;
 }
+
+.status-panel #text1 {
+  color: black;
+  font-size: 16px;
+  font-weight: 900;
+}
+
+.status-panel #text2 {
+  color: #525252;
+  font-size: 13px;
+}
+
+.status-panel #text3 {
+  color: #696969;
+  font-size: 10px;
+}
+
 .board-box {
   background-color: #347deb;
   max-width: 400px;
