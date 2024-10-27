@@ -99,7 +99,7 @@ function fight(humanChoice, computerChoice) {
 	case "rock":
 	  return (computerChoice == "scissors") ? "win" : "loose";
 	case "paper":
-	  return (computerChoice == "stone") ? "win" : "loose";
+	  return (computerChoice == "rock") ? "win" : "loose";
 	case "scissors":
 	  return (computerChoice == "paper") ? "win" : "loose";
 	default:
