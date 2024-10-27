@@ -52,9 +52,9 @@ playButton.addEventListener("click", function() {
 	updateStatus("Please choose the option");
 	playButton.innerText = "press me";
   }
-  if (round == ROUNDS) whoWin();
   if (humanScore > (computerScore + ROUNDS - round) ||
-	  computerScore > (humanScore + ROUNDS - round)) whoWin();
+	  computerScore > (humanScore + ROUNDS - round) ||
+	  round == ROUNDS) whoWin();
 
 });
   
