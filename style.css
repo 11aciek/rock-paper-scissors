@@ -1,6 +1,6 @@
 body {
   background-color: lightblue;
-  font-style: "Silkscreen", "Commodore 54 Pixelized", sans-serif;
+  font-family: "Silkscreen", "Commodore 64 Pixelized", sans-serif;
   font-weight: 400;
 }
 .status-panel {
@@ -85,14 +85,23 @@ body {
   gap: 3em;
 }
 
-.human-button,
-.computer-button {
-  width: 75px;
-  height: 100px;
+.human-button {
+  width: 80px;
+  height: 80px;
+  padding: 0px;
   border-radius: 5px;
 }
 
+.computer-choice {
+  background-color: white;
+  width: 70px;
+  height: 70px;
+  padding: 0px;
+  border-radius: 5px;
+}
+
+
 .active {
-  border: 2px solid red;
-  background-color: lightpink;
+  border: 2px solid darkblue;
+  background-color: black;
 }
